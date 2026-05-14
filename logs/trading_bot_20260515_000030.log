@@ -1,0 +1,13 @@
+2026-05-15 00:00:30 | INFO     | trading_bot.setup_logging:59 | Logging initialized → /Users/hamzafiles/.gemini/antigravity/scratch/trading_bot/logs/trading_bot_20260515_000030.log
+2026-05-15 00:00:30 | DEBUG    | trading_bot.validate_all:179 | Validation passed: {'symbol': 'BTCUSDT', 'side': 'BUY', 'order_type': 'MARKET', 'quantity': 0.001, 'price': None, 'stop_price': None}
+2026-05-15 00:00:30 | INFO     | trading_bot.__init__:57 | BinanceClient initialised → https://testnet.binancefuture.com
+2026-05-15 00:00:30 | DEBUG    | trading_bot.__init__:58 | API Key: wmcoqnN9...0E6D
+2026-05-15 00:00:30 | INFO     | trading_bot.place_market_order:88 | Preparing MARKET order: BUY 0.001 BTCUSDT
+2026-05-15 00:00:30 | INFO     | trading_bot.place_order:210 | Placing order: {'symbol': 'BTCUSDT', 'side': 'BUY', 'type': 'MARKET', 'quantity': '0.001'}
+2026-05-15 00:00:30 | DEBUG    | trading_bot._sign:76 | Signed query: symbol=BTCUSDT&side=BUY&type=MARKET&quantity=0.001&timestamp=1778783430044&signature=5d9cecf37dcf0f73...
+2026-05-15 00:00:30 | DEBUG    | trading_bot._request:112 | → POST https://testnet.binancefuture.com/fapi/v1/order
+2026-05-15 00:00:30 | DEBUG    | trading_bot._request:113 |   Params: {'symbol': 'BTCUSDT', 'side': 'BUY', 'type': 'MARKET', 'quantity': '0.001', 'timestamp': 1778783430044}
+2026-05-15 00:00:30 | DEBUG    | trading_bot._request:117 | ← HTTP 200 | 521 bytes
+2026-05-15 00:00:30 | DEBUG    | trading_bot._request:118 |   Response: {"orderId":13143866145,"symbol":"BTCUSDT","status":"NEW","clientOrderId":"VhL2yt07W8Lwnh4o9NPyso","price":"0.00","avgPrice":"0.00","origQty":"0.0010","executedQty":"0.0000","cumQty":"0.0000","cumQuote":"0.000000","timeInForce":"GTC","type":"MARKET","reduceOnly":false,"closePosition":false,"side":"BUY","positionSide":"BOTH","stopPrice":"0.00","workingType":"CONTRACT_PRICE","priceProtect":false,"origType":"MARKET","priceMatch":"NONE","selfTradePreventionMode":"EXPIRE_MAKER","goodTillDate":0,"updat
+2026-05-15 00:00:30 | INFO     | trading_bot.place_market_order:97 | MARKET order placed successfully: orderId=13143866145
+2026-05-15 00:00:30 | DEBUG    | trading_bot.place_market_order:98 | Full response: {'orderId': 13143866145, 'symbol': 'BTCUSDT', 'status': 'NEW', 'clientOrderId': 'VhL2yt07W8Lwnh4o9NPyso', 'price': '0.00', 'avgPrice': '0.00', 'origQty': '0.0010', 'executedQty': '0.0000', 'cumQty': '0.0000', 'cumQuote': '0.000000', 'timeInForce': 'GTC', 'type': 'MARKET', 'reduceOnly': False, 'closePosition': False, 'side': 'BUY', 'positionSide': 'BOTH', 'stopPrice': '0.00', 'workingType': 'CONTRACT_PRICE', 'priceProtect': False, 'origType': 'MARKET', 'priceMatch': 'NONE', 'selfTradePreventionMode': 'EXPIRE_MAKER', 'goodTillDate': 0, 'updateTime': 1778783430162}
