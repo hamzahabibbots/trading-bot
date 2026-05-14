@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading Bot — Binance Futures Testnet</title>
+    <meta name="description" content="Place orders on Binance Futures Testnet with a beautiful web interface">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">🤖</div>
+            <h1>Trading Bot</h1>
+            <span class="badge">TESTNET</span>
+        </div>
+        <div class="header-right">
+            <div id="connectionStatus" class="status-dot disconnected"></div>
+            <span id="connectionText">Connecting...</span>
+        </div>
+    </header>
+
+    <main class="dashboard">
+        <!-- Price Ticker Bar -->
+        <section class="ticker-bar" id="tickerBar">
+            <div class="ticker-item skeleton"><span class="ticker-symbol">BTCUSDT</span><span class="ticker-price">—</span></div>
+            <div class="ticker-item skeleton"><span class="ticker-symbol">ETHUSDT</span><span class="ticker-price">—</span></div>
+            <div class="ticker-item skeleton"><span class="ticker-symbol">BNBUSDT</span><span class="ticker-price">—</span></div>
+            <div class="ticker-item skeleton"><span class="ticker-symbol">SOLUSDT</span><span class="ticker-price">—</span></div>
+            <div class="ticker-item skeleton"><span class="ticker-symbol">XRPUSDT</span><span class="ticker-price">—</span></div>
+            <div class="ticker-item skeleton"><span class="ticker-symbol">DOGEUSDT</span><span class="ticker-price">—</span></div>
+        </section>
+
+        <div class="grid">
+            <!-- Order Form -->
+            <section class="card order-card">
+                <h2 class="card-title">📋 Place Order</h2>
+                <form id="orderForm">
+                    <div class="form-group">
+                        <label>Symbol</label>
+                        <select id="symbol" required>
+                            <option value="BTCUSDT">BTCUSDT</option>
+                            <option value="ETHUSDT">ETHUSDT</option>
+                            <option value="BNBUSDT">BNBUSDT</option>
+                            <option value="SOLUSDT">SOLUSDT</option>
+                            <option value="XRPUSDT">XRPUSDT</option>
+                            <option value="DOGEUSDT">DOGEUSDT</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Side</label>
+                        <div class="side-toggle">
+                            <button type="button" class="side-btn buy active" data-side="BUY">BUY / Long</button>
+                            <button type="button" class="side-btn sell" data-side="SELL">SELL / Short</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Order Type</label>
+                        <div class="type-tabs">
+                            <button type="button" class="type-btn active" data-type="MARKET">Market</button>
+                            <button type="button" class="type-btn" data-type="LIMIT">Limit</button>
+                            <button type="button" class="type-btn" data-type="STOP">Stop-Limit</button>
+                        </div>
+                    </div>
+                    <div class="form-group" id="priceGroup" style="display:none">
+                        <label>Price (USDT)</label>
+                        <input type="number" id="price" step="any" placeholder="0.00" min="0">
+                    </div>
+                    <div class="form-group" id="stopPriceGroup" style="display:none">
+                        <label>Stop Price (USDT)</label>
+                        <input type="number" id="stopPrice" step="any" placeholder="Trigger price" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label>Quantity</label>
+                        <input type="number" id="quantity" step="any" placeholder="0.001" min="0" required>
+                    </div>
+                    <button type="submit" id="submitBtn" class="submit-btn buy-bg">
+                        <span id="submitText">Place BUY Order</span>
+                        <div class="spinner" id="submitSpinner" style="display:none"></div>
+                    </button>
+                </form>
+            </section>
+
+            <!-- Right Column -->
+            <div class="right-col">
+                <!-- Balance -->
+                <section class="card balance-card">
+                    <h2 class="card-title">💰 Balance</h2>
+                    <div id="balanceContent" class="balance-grid">
+                        <div class="balance-skeleton">Loading...</div>
+                    </div>
+                </section>
+
+                <!-- Order Result -->
+                <section class="card result-card" id="resultCard" style="display:none">
+                    <h2 class="card-title" id="resultTitle">Order Result</h2>
+                    <div id="resultContent"></div>
+                </section>
+
+                <!-- Open Orders -->
+                <section class="card orders-card">
+                    <div class="card-header-row">
+                        <h2 class="card-title">📝 Open Orders</h2>
+                        <button class="refresh-btn" onclick="loadOpenOrders()">↻</button>
+                    </div>
+                    <div id="openOrdersContent">
+                        <p class="muted">Loading...</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- Activity Log -->
+        <section class="card log-card">
+            <h2 class="card-title">📊 Activity Log</h2>
+            <div id="activityLog" class="log-entries">
+                <div class="log-entry info">Initializing trading bot...</div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <span>Binance Futures Testnet — For educational purposes only</span>
+    </footer>
+
+    <script src="/app.js"></script>
+</body>
+</html>
